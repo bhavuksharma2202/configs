@@ -57,9 +57,13 @@ cmd locate !{{
 	locate $file
 }}
 
+cmd vim ${{
+	vim $f
+}}
+
 # mapping for functions
 map rm sudorm
 map vv view
 map fl locate
-
+map vi vim
 
