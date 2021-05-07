@@ -1,0 +1,65 @@
+# properties
+# set hidden true
+set drawbox true
+set icons true 
+set preview true
+
+# setting keys 
+map DD delete
+map C copy
+map X cut
+map V paste
+map rr rename
+map . set hidden!
+map R reload
+
+# remove some default values
+map d
+map m
+map o
+map n
+map f
+map r
+map p
+map c
+map v
+
+#functions
+cmd sudorm %{{
+	printf "sure (yes/no)"
+	read ans
+	if [[ $ans == 'yes' ]];then
+		sudo rm -r $f
+	else
+		exit
+	fi
+}}
+
+cmd scp %{{
+	printf "sure to move (yes/no)"
+	read ans
+	if [[ $ans == 'yes' ]]; then
+		printf "where to move: "
+	 	read path
+		sudo cp -r $f $path
+	else 
+		exit
+	fi
+}}
+
+cmd view ${{
+	feh $f
+}}
+
+cmd locate !{{
+	printf "File Name:"
+	read file
+	locate $file
+}}
+
+# mapping for functions
+map rm sudorm
+map vv view
+map fl locate
+
+
