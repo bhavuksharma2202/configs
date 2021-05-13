@@ -1,0 +1,55 @@
+" plugins
+call plug#begin('~/.config/nvim/plugged')
+
+    Plug 'ptzz/lf.vim'
+    Plug 'voldikss/vim-floaterm'
+    Plug 'ap/vim-css-color'
+
+call plug#end()
+
+let g:airline#extensions#tabline#enabled = 1    " to show all buffers when only one tab is opened
+
+" Basic Settings
+syntax on			" will do syntax highlighting
+set number relativenumber	" to add numbers relatively for lines
+
+set termguicolors		" turns on true color support
+set clipboard+=unnamedplus	" will copy directly to system clipboard
+
+" Autocompletion
+set wildmode=longest,list,full	" tab autocompletion will show longest 1st than list than full
+
+" Fix Splitting
+set splitbelow splitright	" new instance of a file will open in right and below and will not move old instance
+
+" tab stops
+set tabstop=3			" size of the single tab
+set shiftwidth=3		" size of the shift when used >> or <<
+set expandtab			" to make tabstop active
+
+" enable disable auto comment (leader key is backslash \ )
+map <leader>c :setlocal formatoptions-=cro<CR>
+map <leader>C :setlocal formatoptions=cro<CR>
+
+" enable disable auto-indent
+map <leader>i :setlocal autoindent<CR>
+map <leader>I :setlocal noautoindent<CR>
+
+" spell checker : uses builtin spell checker
+map <leader>s :setlocal spell! spelllang=en_us<CR>	
+
+" shell check : needs shellcheck to be installed
+map <leader>P :!clear && shellcheck %<CR>
+
+" insert to center: will center the screen vertically when enters insert mode
+autocmd InsertEnter * norm zz	
+
+" split navigation
+map <C-h> <C-w>h	
+map <C-j> <C-w>j
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+
+" change split openings
+nnoremap <leader>h :split<Space>
+nnoremap <leader>v :vsplit<Space>
