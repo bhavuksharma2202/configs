@@ -20,15 +20,15 @@ cmd sudorm %{{
 	fi
 }}
 
-cmd scp %{{
+cmd scp %{{                     # need to use full path for commands
 	echo 'where to copy'
 	read PATH
 	echo 'use root (y/n/abort)'
 	read ans
 	if [[ $ans == 'y' ]]; then
-		`sudo cp -r $f $PATH`
+		/bin/sudo /bin/cp -r $f $PATH
 	elif [[ $ans == 'n' ]]; then
-		cp -r $f $PATH
+		/usr/bin/cp -r $f $PATH
 	else
 		echo 'aborted'
 		exit
